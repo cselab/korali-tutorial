@@ -32,3 +32,4 @@
 *.app
 
 _korali_result
+__pycache__
