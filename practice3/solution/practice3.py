@@ -45,3 +45,10 @@ e["File Output"]["Enabled"] = False
 # Running Korali
 k.run(e)
 
+# Print Results Manually
+maximum = e["Results"]["Best Sample"]["F(x)"]
+x = e["Results"]["Best Sample"]["Parameters"][0]
+y = e["Results"]["Best Sample"]["Parameters"][1]
+
+print("Found Maximum: " + str(maximum) + " at (" + str(x) + ", " + str(x) + ")")
+

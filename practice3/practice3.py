@@ -43,3 +43,5 @@ e["Solver"]["Termination Criteria"]["Min Value Difference Threshold"] = 1e-6
 # Running Korali
 k.run(e)
 
+# Print Results Manually
+
