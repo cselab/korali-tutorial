@@ -15,8 +15,8 @@ pointsInfo __p;
 
 void heat2DSolver(korali::Sample& k)
 {
- double tolerance = 1e-8; // L2 Difference Tolerance before reaching convergence.
- size_t N0 = 7; // 2^N0 + 1 elements per side
+ double tolerance = 1e-9; // L2 Difference Tolerance before reaching convergence.
+ size_t N0 = 6; // 2^N0 + 1 elements per side
 
  // Multigrid parameters -- Find the best configuration!
  int gridCount       = 6;     // Number of Multigrid levels to use
@@ -129,10 +129,19 @@ void applyProlongation(gridLevel* g, int l)
 gridLevel* generateInitialConditions(size_t N0, int gridCount, std::vector<double> pars)
 {
  // Problem Parameters
- double intensity = pars[0];
- double xPos = pars[1];
- double yPos = pars[2];
+ if (pars.size() % 2 != 1) { printf("Error: Parameter count is not divisible by 2 (x, y) + 1 (sigma)."); exit(-1); }
+ size_t nSources = pars.size() / 2;
+
+ std::vector<double> xPos(nSources);
+ std::vector<double> yPos(nSources);
  double width = 0.05;
+ double intensity = 37.0;
+
+ for (size_t i = 0; i < nSources; i++)
+ {
+  xPos[i] = pars[i*2 + 0];
+  yPos[i] = pars[i*2 + 1];
+ }
 
  // Allocating Grids
  gridLevel* g = (gridLevel*) calloc(sizeof(gridLevel), gridCount);
@@ -169,8 +178,10 @@ gridLevel* generateInitialConditions(size_t N0, int gridCount, std::vector<doubl
 
   g[0].f[i][j] = 0.0;
 
-  // Heat Source: Candle
-  g[0].f[i][j] += -(4*intensity*exp( -(pow(xPos - y, 2) + pow(yPos - x, 2)) / width ) * (pow(xPos,2) - 2*xPos*y + pow(yPos,2) - 2*yPos*x + pow(y,2) + pow(x,2) - width))/pow(width,2);
+  // Adding the effect of the n heat sources
+  for (size_t k = 0; k < nSources; k++)
+    g[0].f[i][j] += -(4*intensity*exp( -(pow(xPos[k] - y, 2) + pow(yPos[k] - x, 2)) / width ) * (pow(xPos[k],2) - 2*xPos[k]*y + pow(yPos[k],2) - 2*yPos[k]*x + pow(y,2) + pow(x,2) - width))/pow(width,2);
+
  }
 
  return g;
@@ -197,7 +208,7 @@ pointsInfoStruct& heat2DInit(const std::string& inputFile)
 
  size_t nPoints = 0;
 
- printf("Heat2D - Running problem from data.in... \n");
+ printf("Heat2D - Running problem from %s... \n", inputFile.c_str());
  problemFile = fopen(inputFile.c_str(), "r");
  fscanf(problemFile, "%lu", &nPoints);
 

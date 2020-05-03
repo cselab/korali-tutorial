@@ -11,8 +11,9 @@
 0.1576 0.6557 -0.4510699243512776290820909
 
 /////////////////////////////////////////
-Expected Solution:
-Intensity: 37
+The values above have been added noise that should be reflected on the sigma parameter
+
+Exact Solution:
 X0: 0.3
 Y0: 0.8
 /////////////////////////////////////////
