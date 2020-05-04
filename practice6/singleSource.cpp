@@ -45,8 +45,6 @@ int main(int argc, char* argv[])
 
  e["Store Sample Information"] = true;
 
- k["Conduit"]["Type"] = "Concurrent";
- k["Conduit"]["Concurrent Jobs"] = 12;
  k.run(e);
 
  // Now looking for the best sample among the sample population
