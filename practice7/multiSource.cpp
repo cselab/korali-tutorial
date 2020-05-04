@@ -85,7 +85,7 @@ int main(int argc, char* argv[])
  e["Store Sample Information"] = true;
 
  // Add conduit selection here to parallelize your code
-  
+ 
  k.run(e);
 
  // Now looking for the best sample among the sample population

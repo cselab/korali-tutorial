@@ -85,8 +85,8 @@ int main(int argc, char* argv[])
  e["Store Sample Information"] = true;
 
  // Add conduit selection here to parallelize your code
- k["Conduit"]["Type"] = "Concurrent"
- k["Conduit"]["Concurrent Jobs"] = 12
+ k["Conduit"]["Type"] = "Concurrent";
+ k["Conduit"]["Concurrent Jobs"] = 12;
  
  k.run(e);
 
