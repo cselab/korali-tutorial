@@ -24,8 +24,9 @@ e["Problem"]["Reference Data"] = y
 e["Problem"]["Computational Model"] = lambda sample : model(sample, x)
 
 # Configuring CMA-ES parameters
-e["Solver"]["Type"] = "TMCMC"
-e["Solver"]["Population Size"] = 2000
+e["Solver"]["Type"] = "CMAES"
+e["Solver"]["Population Size"] = 12
+e["Solver"]["Termination Criteria"]["Min Value Difference Threshold"] = 0.00001
 
 # Configuring the problem's random distributions
 e["Distributions"][0]["Name"] = "Prior 1"
@@ -39,19 +40,25 @@ e["Distributions"][1]["Minimum"] = -5.0
 e["Distributions"][1]["Maximum"] = +5.0
 
 e["Distributions"][2]["Name"] = "Error Distribution"
-e["Distributions"][2]["Type"] = "Univariate/Uniform"
-e["Distributions"][2]["Minimum"] = 0.0 
-e["Distributions"][2]["Maximum"] = +5.0
+e["Distributions"][2]["Type"] = "Univariate/Normal"
+e["Distributions"][2]["Mean"] = 0.0 
+e["Distributions"][2]["Standard Deviation"] = 2.0
 
 # Configuring the problem's variables
 e["Variables"][0]["Name"] = "S0"
 e["Variables"][0]["Prior Distribution"] = "Prior 1"
+e["Variables"][0]["Lower Bound"] = -5.0
+e["Variables"][0]["Upper Bound"] = +5.0
 
 e["Variables"][1]["Name"] = "S1"
 e["Variables"][1]["Prior Distribution"] = "Prior 2"
+e["Variables"][1]["Lower Bound"] = -5.0
+e["Variables"][1]["Upper Bound"] = +5.0
 
 e["Variables"][2]["Name"] = "[Sigma]"
 e["Variables"][2]["Prior Distribution"] = "Error Distribution"
+e["Variables"][2]["Lower Bound"] = -5.0
+e["Variables"][2]["Upper Bound"] = +5.0
 
 # Starting Korali's Engine and running experiment
 k = korali.Engine()
