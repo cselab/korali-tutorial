@@ -9,8 +9,8 @@ def runModel(sample):
   # Create the launch command, containing first the path of the model we want to run
   argString = ['model/model.py']
   
-  # Getg the model parameters from Korali
-  v = x["Parameters"]
+  # Get the model parameters from Korali
+  v = sample["Parameters"]
 
   # For each parameter, append it to the launch command
   for i in v: argString.append(str(i))
@@ -22,7 +22,7 @@ def runModel(sample):
   result = float(retValue.decode())
 
   # Save the return value as result in the sample
-  x["F(x)"] = result
+  sample["F(x)"] = result
 
 k = korali.Engine()
 e = korali.Experiment()
