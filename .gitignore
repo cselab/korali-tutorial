@@ -1,5 +1,9 @@
 #1 Prerequisites
 multiSource
+*.json
+practice8
+practice9
+practice10
 *.d
 
 # Compiled Object files
