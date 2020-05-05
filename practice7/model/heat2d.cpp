@@ -208,7 +208,7 @@ pointsInfoStruct& heat2DInit(const std::string& inputFile)
 
  size_t nPoints = 0;
 
- printf("Heat2D - Running problem from %s... \n", inputFile.c_str());
+ //printf("Heat2D - Running problem from %s... \n", inputFile.c_str());
  problemFile = fopen(inputFile.c_str(), "r");
  fscanf(problemFile, "%lu", &nPoints);
 

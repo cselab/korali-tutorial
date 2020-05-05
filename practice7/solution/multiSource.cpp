@@ -89,7 +89,8 @@ int main(int argc, char* argv[])
  k["Conduit"]["Concurrent Jobs"] = 12;
  
  // For MPI-based distributed execution:
- // k["Conduit"]["Type"] = "Distributed"
+ // MPI_Init(NULL, NULL);
+ // k["Conduit"]["Type"] = "Distributed";
  
  k.run(e);
 
