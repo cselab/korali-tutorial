@@ -101,9 +101,11 @@ int main(int argc, char* argv[])
 
  auto k = korali::Engine();
 
- // Configure the distributed conduit here
+ k["Conduit"]["Type"] = "Distributed";
+ k["Conduit"]["Workers Per Team"] = workersPerTeam;
 
- // Configure profiling information here
+ k["Profiling"]["Detail"] = "Full";
+ k["Profiling"]["Frequency"] = 0.5;
 
  k.run(e);
  

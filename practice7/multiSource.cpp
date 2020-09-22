@@ -85,40 +85,11 @@ int main(int argc, char* argv[])
  e["Store Sample Information"] = true;
 
  // Add conduit selection here to parallelize your code
- 
+ MPI_Init(NULL, NULL);
+ k["Conduit"]["Type"] = "Distributed";
+
  k.run(e);
 
- // Now looking for the best sample among the sample population
-
- double maxPosterior = -korali::Inf;
- size_t bestSampleIdx = 0;
-
- printf("\n");
- printf("Best Parameters:\n");
- printf("----------------\n");
-
- for (size_t i = 0; i < e["Samples"].size(); i++)
- {
-  double currPosterior = e["Samples"][i]["logPosterior"];
-  if (currPosterior > maxPosterior)
-  {
-   maxPosterior = currPosterior;
-   bestSampleIdx = i;
-  }
- }
-
- std::vector<double> bestParameters = e["Samples"][bestSampleIdx]["Parameters"];
-
- printf("X0: %f\n", bestParameters[0]);
- printf("Y0: %f\n", bestParameters[1]);
-
- printf("X1: %f\n", bestParameters[2]);
- printf("Y1: %f\n", bestParameters[3]);
-
- printf("X2: %f\n", bestParameters[4]);
- printf("Y2: %f\n", bestParameters[5]);
-
- printf("Sigma: %f\n", bestParameters[6]);
 
  return 0;
 }

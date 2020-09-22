@@ -2,12 +2,10 @@
 import korali
 import sys
 import subprocess
-sys.path.append("model")
-from model import *
 
 def runModel(sample):
   # Create the launch command, containing first the path of the model we want to run
-  argString = ['model/model.py']
+  argString = ['../model/model.py']
   
   # Get the model parameters from Korali
   v = sample["Parameters"]
@@ -51,5 +49,6 @@ e["Variables"][3]["Lower Bound"] = -32.0;
 e["Variables"][3]["Upper Bound"] = +32.0;
 
 k["Conduit"]["Type"] = "Concurrent"
+k["Conduit"]["Concurrent Jobs"] = 12
 
 k.run(e)

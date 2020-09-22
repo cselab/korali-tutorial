@@ -34,13 +34,13 @@ int main(int argc, char* argv[])
  e["Distributions"][0]["Name"] = "Uniform 0";
  e["Distributions"][0]["Type"] = "Univariate/Uniform";
  e["Distributions"][0]["Minimum"] = 0.0;
- e["Distributions"][0]["Maximum"] = 1.0;
+ e["Distributions"][0]["Maximum"] = 0.5;
 
  e["Variables"][1]["Name"] = "Pos Y0";
  e["Variables"][1]["Prior Distribution"] = "Uniform 1";
  e["Distributions"][1]["Name"] = "Uniform 1";
  e["Distributions"][1]["Type"] = "Univariate/Uniform";
- e["Distributions"][1]["Minimum"] = 0.0;
+ e["Distributions"][1]["Minimum"] = 0.5;
  e["Distributions"][1]["Maximum"] = 1.0;
 
  // Heat Source 1
@@ -49,14 +49,14 @@ int main(int argc, char* argv[])
  e["Variables"][2]["Prior Distribution"] = "Uniform 2";
  e["Distributions"][2]["Name"] = "Uniform 2";
  e["Distributions"][2]["Type"] = "Univariate/Uniform";
- e["Distributions"][2]["Minimum"] = 0.0;
+ e["Distributions"][2]["Minimum"] = 0.5;
  e["Distributions"][2]["Maximum"] = 1.0;
 
  e["Variables"][3]["Name"] = "Pos Y1";
  e["Variables"][3]["Prior Distribution"] = "Uniform 3";
  e["Distributions"][3]["Name"] = "Uniform 3";
  e["Distributions"][3]["Type"] = "Univariate/Uniform";
- e["Distributions"][3]["Minimum"] = 0.0;
+ e["Distributions"][3]["Minimum"] = 0.5;
  e["Distributions"][3]["Maximum"] = 1.0;
 
  // Heat Source 2
@@ -65,7 +65,7 @@ int main(int argc, char* argv[])
  e["Variables"][4]["Prior Distribution"] = "Uniform 4";
  e["Distributions"][4]["Name"] = "Uniform 4";
  e["Distributions"][4]["Type"] = "Univariate/Uniform";
- e["Distributions"][4]["Minimum"] = 0.0;
+ e["Distributions"][4]["Minimum"] = 0.5;
  e["Distributions"][4]["Maximum"] = 1.0;
 
  e["Variables"][5]["Name"] = "Pos Y2";
@@ -73,7 +73,7 @@ int main(int argc, char* argv[])
  e["Distributions"][5]["Name"] = "Uniform 5";
  e["Distributions"][5]["Type"] = "Univariate/Uniform";
  e["Distributions"][5]["Minimum"] = 0.0;
- e["Distributions"][5]["Maximum"] = 1.0;
+ e["Distributions"][5]["Maximum"] = 0.5;
 
  e["Variables"][6]["Name"] = "[Sigma]";
  e["Variables"][6]["Prior Distribution"] = "Uniform 6";
@@ -83,7 +83,8 @@ int main(int argc, char* argv[])
  e["Distributions"][6]["Maximum"] = 20.0;
 
  e["Store Sample Information"] = true;
-
+ k["Conduit"]["Type"] = "Concurrent";
+ k["Conduit"]["Concurrent Jobs"] = 12;
  k.run(e);
 
  // Now looking for the best sample among the sample population
