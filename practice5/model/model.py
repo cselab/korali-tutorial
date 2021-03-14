@@ -7,12 +7,16 @@ import numpy as np
 def model( s, x ): 
   v1 = s["Parameters"][0]
   v2 = s["Parameters"][1]
+  sigma = s["Parameters"][2]
   
-  result = [ ]
+  refEvals = [ ]
+  stdDev = [ ]
   for i in range(len(x)):
-    result.append(v1*x[i] + v2)
+    refEvals.append(v1*x[i] + v2)
+    stdDev.append(sigma)
 
-  s["Reference Evaluations"] = result
+  s["Reference Evaluations"] = refEvals
+  s["Standard Deviation"] = stdDev
 
 def getReferenceData():
  y=[]

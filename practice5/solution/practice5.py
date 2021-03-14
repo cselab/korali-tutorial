@@ -19,12 +19,12 @@ y = getReferenceData()
 
 # Setting up the reference likelihood for the Bayesian Problem
 e["Problem"]["Type"] = "Bayesian/Reference" 
-e["Problem"]["Likelihood Model"] = "Additive Normal"
+e["Problem"]["Likelihood Model"] = "Normal"
 e["Problem"]["Reference Data"] = y
 e["Problem"]["Computational Model"] = lambda sample : model(sample, x)
 
 # Configuring CMA-ES parameters
-e["Solver"]["Type"] = "TMCMC"
+e["Solver"]["Type"] = "Sampler/TMCMC"
 e["Solver"]["Population Size"] = 2000
 
 # Configuring the problem's random distributions

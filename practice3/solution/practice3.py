@@ -17,7 +17,7 @@ k = korali.Engine()
 e = korali.Experiment()
 
 # Configuring Problem
-e["Problem"]["Type"] = "Optimization/Stochastic"
+e["Problem"]["Type"] = "Optimization"
 e["Problem"]["Objective Function"] = myObjectiveFunction
 
 # Defining the problem's variables.
@@ -30,11 +30,11 @@ e["Variables"][1]["Lower Bound"] = -10.0
 e["Variables"][1]["Upper Bound"] = +10.0
 
 # Configure the CMAES solver
-e["Solver"]["Type"] = "CMAES"
+e["Solver"]["Type"] = "Optimizer/CMAES"
 e["Solver"]["Population Size"] = 4 
 
 # Add Termination Criteria
-e["Solver"]["Termination Criteria"]["Min Value Difference Threshold"] = 1e-6
+e["Solver"]["Termination Criteria"]["Max Generations"] = 100
 
 # Prevent Console Output
 e["Console Output"]["Verbosity"] = "Silent"

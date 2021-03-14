@@ -19,8 +19,11 @@ e["Problem"]["Type"] = "Sampling"
 e["Problem"]["Probability Function"] = 
 
 # Configuring the MCMC sampler parameters
-e["Solver"]["Type"]  = "MCMC"
+e["Solver"]["Type"]  = "Sampler/MCMC"
 e["Solver"]["Termination Criteria"]["Max Samples"] = 50000
+
+# Setup MCMC Burn In Duration
+e["Solver"]["Burn In"] =
 
 # Defining problem's variables
 e["Variables"][0]["Name"] = 

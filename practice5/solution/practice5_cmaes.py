@@ -19,12 +19,12 @@ y = getReferenceData()
 
 # Setting up the reference likelihood for the Bayesian Problem
 e["Problem"]["Type"] = "Bayesian/Reference" 
-e["Problem"]["Likelihood Model"] = "Additive Normal"
+e["Problem"]["Likelihood Model"] = "Normal"
 e["Problem"]["Reference Data"] = y
 e["Problem"]["Computational Model"] = lambda sample : model(sample, x)
 
 # Configuring CMA-ES parameters
-e["Solver"]["Type"] = "CMAES"
+e["Solver"]["Type"] = "Optimizer/CMAES"
 e["Solver"]["Population Size"] = 12
 e["Solver"]["Termination Criteria"]["Min Value Difference Threshold"] = 0.00001
 
@@ -57,8 +57,8 @@ e["Variables"][1]["Upper Bound"] = +5.0
 
 e["Variables"][2]["Name"] = "[Sigma]"
 e["Variables"][2]["Prior Distribution"] = "Error Distribution"
-e["Variables"][2]["Lower Bound"] = -5.0
-e["Variables"][2]["Upper Bound"] = +5.0
+e["Variables"][2]["Lower Bound"] = 0.0
+e["Variables"][2]["Upper Bound"] = 1.0
 
 # Starting Korali's Engine and running experiment
 k = korali.Engine()

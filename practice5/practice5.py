@@ -6,29 +6,31 @@
 
 # Importing the computational model
 import sys
-sys.path.append('./model')
+sys.path.append('../model')
 from model import *
 
 # Creating new experiment
 import korali
 e = korali.Experiment()
 
-# Get Reference Data and Points
+# Getting Reference Data and Points
+x = getReferencePoints()
+y = getReferenceData()
 
 # Setting up the reference likelihood for the Bayesian Problem
-e["Problem"]["Type"] = 
+e["Problem"]["Type"] = "Bayesian/Reference" 
 e["Problem"]["Likelihood Model"] = 
-e["Problem"]["Reference Data"] = 
-e["Problem"]["Computational Model"] = 
+e["Problem"]["Reference Data"] =
+e["Problem"]["Computational Model"] =
 
 # Configuring CMA-ES parameters
-e["Solver"]["Type"] = "TMCMC"
+e["Solver"]["Type"] = "Sampler/TMCMC"
 e["Solver"]["Population Size"] = 2000
 
 # Configuring the problem's random distributions
 e["Distributions"][0]["Name"] = 
 e["Distributions"][0]["Type"] = 
-e["Distributions"][0]["Minimum"] =
+e["Distributions"][0]["Minimum"] = 
 e["Distributions"][0]["Maximum"] = 
 
 e["Distributions"][1]["Name"] = 
@@ -38,15 +40,15 @@ e["Distributions"][1]["Maximum"] =
 
 e["Distributions"][2]["Name"] = 
 e["Distributions"][2]["Type"] = 
-e["Distributions"][2]["Mean"] = 
-e["Distributions"][2]["Standard Deviation"] = 
+e["Distributions"][2]["Minimum"] =  
+e["Distributions"][2]["Maximum"] = 
 
 # Configuring the problem's variables
 e["Variables"][0]["Name"] = 
 e["Variables"][0]["Prior Distribution"] = 
 
 e["Variables"][1]["Name"] = 
-e["Variables"][1]["Prior Distribution"] = 
+e["Variables"][1]["Prior Distribution"] =
 
 e["Variables"][2]["Name"] = 
 e["Variables"][2]["Prior Distribution"] = 
