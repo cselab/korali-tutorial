@@ -25,12 +25,12 @@ start = time.time()
 for i in range(8):
   e = korali.Experiment()
   e["Problem"]["Type"] = "Bayesian/Reference"
-  e["Problem"]["Likelihood Model"] = "Additive Normal"
+  e["Problem"]["Likelihood Model"] = "Normal"
   e["Problem"]["Reference Data"] = getReferenceData()
   e["Problem"]["Computational Model"] = lambda sampleData: model(sampleData, getReferencePoints())
   
   # Configuring CMA-ES parameters
-  e["Solver"]["Type"] = "CMAES"
+  e["Solver"]["Type"] = "Optimizer/CMAES"
   e["Solver"]["Population Size"] = 12 
   e["Solver"]["Termination Criteria"]["Max Generations"] = 100
   
@@ -53,16 +53,22 @@ for i in range(8):
   # Configuring the problem's variables
   e["Variables"][0]["Name"] = "a"
   e["Variables"][0]["Prior Distribution"] = "Uniform 0"
+  e["Variables"][0]["Lower Bound"] = -5.0
+  e["Variables"][0]["Upper Bound"] = +5.0
   e["Variables"][0]["Initial Mean"] = +0.0
   e["Variables"][0]["Initial Standard Deviation"] = +1.0
   
   e["Variables"][1]["Name"] = "b"
   e["Variables"][1]["Prior Distribution"] = "Uniform 1"
+  e["Variables"][1]["Lower Bound"] = -5.0
+  e["Variables"][1]["Upper Bound"] = +5.0
   e["Variables"][1]["Initial Mean"] = +0.0
   e["Variables"][1]["Initial Standard Deviation"] = +1.0
   
   e["Variables"][2]["Name"] = "[Sigma]"
   e["Variables"][2]["Prior Distribution"] = "Uniform 2"
+  e["Variables"][2]["Lower Bound"] = 0.0
+  e["Variables"][2]["Upper Bound"] = +5.0
   e["Variables"][2]["Initial Mean"] = +2.5
   e["Variables"][2]["Initial Standard Deviation"] = +0.5
  

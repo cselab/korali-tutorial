@@ -5,14 +5,18 @@
 def model( s, x ): 
   v1 = s["Parameters"][0]
   v2 = s["Parameters"][1]
+  sigma = s["Parameters"][2]
   
   # Adding superfluous computation to simulate a heavy model
   for it in range(10000):
    result = [ ]
+   sigmas = [ ]
    for i in range(len(x)):
      result.append(v1*x[i] + v2)
-
+     sigmas.append(sigma)
+     
   s["Reference Evaluations"] = result
+  s["Standard Deviation"] = sigmas
 
 def getReferenceData():
  y=[]
