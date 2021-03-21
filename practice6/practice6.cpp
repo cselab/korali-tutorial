@@ -17,7 +17,7 @@ int main(int argc, char* argv[])
 {
  auto k = korali::Engine();
  auto e = korali::Experiment();
- auto p = heat2DInit("data_3source.in");
+ auto p = heat2DInit("model/data.in");
 
  e["Problem"]["Type"] = "Bayesian/Reference";
  e["Problem"]["Likelihood Model"] = "Additive Normal";

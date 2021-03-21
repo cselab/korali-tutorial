@@ -37,6 +37,7 @@ e["Solver"]["Population Size"] = 4
 e["Solver"]["Termination Criteria"]["Max Generations"] = 100
 
 # Prevent Console Output
+e["Console Output"]["Verbosity"] = "Silent"
 
 # Prevent File Output
 
