@@ -88,6 +88,10 @@ int main(int argc, char* argv[])
  k["Conduit"]["Type"] = "Concurrent";
  k["Conduit"]["Concurrent Jobs"] = 12;
 
+ // For MPI-based distributed execution:
+ // MPI_Init(NULL, NULL);
+ // k["Conduit"]["Type"] = "Distributed";
+
  k.run(e);
 
  // Now looking for the best sample among the sample population

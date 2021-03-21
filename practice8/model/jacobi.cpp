@@ -20,7 +20,7 @@ struct Neighbor {
 void jacobi(korali::Sample& k)
 {
  int myRank, rankCount;
- MPI_Comm comm = getKoraliMPIComm();
+ MPI_Comm comm = korali::getKoraliMPIComm();
  MPI_Comm_rank(comm, &myRank);
  MPI_Comm_size(comm, &rankCount);
 
@@ -139,6 +139,7 @@ void jacobi(korali::Sample& k)
  auto xdata = getPointData();
 
  std::vector<double> resultVector;
+
  for (size_t i = 0; i < xdata.size(); i += 3)
  {
   MPI_Barrier(comm);
@@ -169,7 +170,11 @@ void jacobi(korali::Sample& k)
   resultVector.push_back(result);
  }
 
+ double sigma = k["Parameters"][6];
+ std::vector<double> sigmaVector(resultVector.size(), sigma);
+
  k["Reference Evaluations"] = resultVector;
+ k["Standard Deviation"] = sigmaVector;
 
  free(U);
  free(Un);

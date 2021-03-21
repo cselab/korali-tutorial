@@ -86,7 +86,6 @@ int main(int argc, char* argv[])
 
  // Here you should add configuration for concurrent execution
 
-
  k.run(e);
 
  // Now looking for the best sample among the sample population
