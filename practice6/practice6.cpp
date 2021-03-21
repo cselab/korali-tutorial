@@ -30,62 +30,45 @@ int main(int argc, char* argv[])
  // Heat Source 0
 
  e["Variables"][0]["Name"] = "Pos X0";
- e["Variables"][0]["Prior Distribution"] = "Uniform 0";
- e["Distributions"][0]["Name"] = "Uniform 0";
- e["Distributions"][0]["Type"] = "Univariate/Uniform";
- e["Distributions"][0]["Minimum"] = 0.0;
- e["Distributions"][0]["Maximum"] = 0.5;
+ e["Variables"][0]["Prior Distribution"] = "Prior 0";
+ e["Distributions"][0]["Name"] = "Prior 0";
+ e["Distributions"][0]["Type"] =
 
  e["Variables"][1]["Name"] = "Pos Y0";
- e["Variables"][1]["Prior Distribution"] = "Uniform 1";
- e["Distributions"][1]["Name"] = "Uniform 1";
- e["Distributions"][1]["Type"] = "Univariate/Uniform";
- e["Distributions"][1]["Minimum"] = 0.5;
- e["Distributions"][1]["Maximum"] = 1.0;
+ e["Variables"][1]["Prior Distribution"] = "Prior 1";
+ e["Distributions"][1]["Name"] = "Prior 1";
+ e["Distributions"][1]["Type"] =
 
  // Heat Source 1
 
  e["Variables"][2]["Name"] = "Pos X1";
- e["Variables"][2]["Prior Distribution"] = "Uniform 2";
- e["Distributions"][2]["Name"] = "Uniform 2";
- e["Distributions"][2]["Type"] = "Univariate/Uniform";
- e["Distributions"][2]["Minimum"] = 0.5;
- e["Distributions"][2]["Maximum"] = 1.0;
+ e["Variables"][2]["Prior Distribution"] = "Prior 2";
+ e["Distributions"][2]["Name"] = "Prior 2";
+ e["Distributions"][2]["Type"] =
 
  e["Variables"][3]["Name"] = "Pos Y1";
- e["Variables"][3]["Prior Distribution"] = "Uniform 3";
- e["Distributions"][3]["Name"] = "Uniform 3";
- e["Distributions"][3]["Type"] = "Univariate/Uniform";
- e["Distributions"][3]["Minimum"] = 0.5;
- e["Distributions"][3]["Maximum"] = 1.0;
+ e["Variables"][3]["Prior Distribution"] = "Prior 3";
+ e["Distributions"][3]["Name"] = "Prior 3";
+ e["Distributions"][3]["Type"] =
 
  // Heat Source 2
 
  e["Variables"][4]["Name"] = "Pos X2";
- e["Variables"][4]["Prior Distribution"] = "Uniform 4";
- e["Distributions"][4]["Name"] = "Uniform 4";
- e["Distributions"][4]["Type"] = "Univariate/Uniform";
- e["Distributions"][4]["Minimum"] = 0.5;
- e["Distributions"][4]["Maximum"] = 1.0;
+ e["Variables"][4]["Prior Distribution"] = "Prior 4";
+ e["Distributions"][4]["Name"] = "Prior 4";
+ e["Distributions"][4]["Type"] =
 
  e["Variables"][5]["Name"] = "Pos Y2";
- e["Variables"][5]["Prior Distribution"] = "Uniform 5";
- e["Distributions"][5]["Name"] = "Uniform 5";
- e["Distributions"][5]["Type"] = "Univariate/Uniform";
- e["Distributions"][5]["Minimum"] = 0.0;
- e["Distributions"][5]["Maximum"] = 0.5;
+ e["Variables"][5]["Prior Distribution"] = "Prior 5";
+ e["Distributions"][5]["Name"] = "Prior 5";
+ e["Distributions"][5]["Type"] =
 
  e["Variables"][6]["Name"] = "[Sigma]";
- e["Variables"][6]["Prior Distribution"] = "Uniform 6";
- e["Distributions"][6]["Name"] = "Uniform 6";
- e["Distributions"][6]["Type"] = "Univariate/Uniform";
- e["Distributions"][6]["Minimum"] = 0.0;
- e["Distributions"][6]["Maximum"] = 20.0;
+ e["Variables"][6]["Prior Distribution"] = "Prior 6";
+ e["Distributions"][6]["Name"] = "Prior 6";
+ e["Distributions"][6]["Type"] =
 
  e["Store Sample Information"] = true;
-
- // Add concurrent parallelization here
-
  k.run(e);
 
  // Now looking for the best sample among the sample population
