@@ -15,9 +15,9 @@ import korali
 k = korali.Engine()
 e = korali.Experiment()
 
-e["Problem"]["Type"] = "Optimization/Stochastic"
+e["Problem"]["Type"] = "Optimization"
 
-e["Solver"]["Type"] = "CMAES"
+e["Solver"]["Type"] = "Optimizer/CMAES"
 e["Solver"]["Population Size"] = 5
 e["Solver"]["Termination Criteria"]["Max Generations"] = 5
 
@@ -29,14 +29,15 @@ e["Variables"][0]["Upper Bound"] = +10.0
 e["Problem"]["Objective Function"] = model
 
 # Loading previous results, if they exist.
-found = e.loadState()
+resultsPath = "_result_cmaes"
+e["File Output"]["Path"] = resultsPath
+found = e.loadState(resultsPath + '/latest')
 
 # If not found, we run first 5 generations.
 if (found == False):
  print('------------------------------------------------------')
  print('Running first 5 generations anew...')
  print('------------------------------------------------------')
- k.run(e)
 
 # If found, we continue with the next 5 generations. 
 if (found == True):
@@ -44,4 +45,5 @@ if (found == True):
  print('Running 5 more generations from previous run...')
  print('------------------------------------------------------')
  e["Solver"]["Termination Criteria"]["Max Generations"] = 10
- k.resume(e)
+
+k.run(e)

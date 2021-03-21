@@ -15,9 +15,9 @@ import korali
 k = korali.Engine()
 e = korali.Experiment()
 
-e["Problem"]["Type"] = "Optimization/Stochastic"
+e["Problem"]["Type"] = "Optimization"
 
-e["Solver"]["Type"] = "CMAES"
+e["Solver"]["Type"] = "Optimizer/CMAES"
 e["Solver"]["Population Size"] = 5
 e["Solver"]["Termination Criteria"]["Max Generations"] = 10
 
@@ -27,6 +27,10 @@ e["Variables"][0]["Upper Bound"] = +10.0
 
 # Setting computational model
 e["Problem"]["Objective Function"] = model
+
+# Setting results folder
+resultsPath = "_result_cmaes"
+e["File Output"]["Path"] = resultsPath
 
 # Initially, we run all 10 generations at once
 k.run(e)
