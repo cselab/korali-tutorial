@@ -46,12 +46,16 @@ void heat2DSolver(korali::Sample& k)
   calculateL2Norm(g, 0); // Calculating Residual L2 Norm
  }  // Multigrid solver end
 
+ // Getting proposal sigma
+ double sigma = k["Parameters"][6];
+
  // Saving the value of temperatures at specified points
  double h = 1.0/(g[0].N-1);
  for(size_t i = 0; i < __p.refTemp.size(); i++)
  {
   int m = ceil(__p.xPos[i]/h); int l = ceil(__p.yPos[i]/h);
   k["Reference Evaluations"][i] = g[0].U[m][l];
+  k["Standard Deviation"][i] = sigma;
  }
 
  freeGrids(g, gridCount);

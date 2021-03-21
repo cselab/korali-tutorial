@@ -17,14 +17,14 @@ int main(int argc, char* argv[])
 {
  auto k = korali::Engine();
  auto e = korali::Experiment();
- auto p = heat2DInit("data_3source.in");
+ auto p = heat2DInit("model/data.in");
 
  e["Problem"]["Type"] = "Bayesian/Reference";
- e["Problem"]["Likelihood Model"] = "Additive Normal";
+ e["Problem"]["Likelihood Model"] = "Normal";
  e["Problem"]["Reference Data"] = p.refTemp;
  e["Problem"]["Computational Model"] = &heat2DSolver;
 
- e["Solver"]["Type"] = "TMCMC";
+ e["Solver"]["Type"] = "Sampler/TMCMC";
  e["Solver"]["Population Size"] = 2000;
 
  // Heat Source 0
@@ -83,6 +83,10 @@ int main(int argc, char* argv[])
  e["Distributions"][6]["Maximum"] = 20.0;
 
  e["Store Sample Information"] = true;
+
+ // Add concurrent parallelization here
+ k["Conduit"]["Type"] = "Concurrent";
+ k["Conduit"]["Concurrent Jobs"] = 12;
 
  k.run(e);
 
